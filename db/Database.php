@@ -40,7 +40,7 @@ class Database{
     }
 
     /**
-    * Basic sanitazing method. Escapes quotes and double quotes.
+    * Basic sanitazing method.
     */
     private static function sanitizeReplace($replace){
         $final = [];
