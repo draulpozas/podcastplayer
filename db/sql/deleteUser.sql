@@ -1,0 +1,1 @@
+DELETE FROM `podcasts`.`user` WHERE id = {{id}};

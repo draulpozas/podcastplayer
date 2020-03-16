@@ -1,0 +1,1 @@
+{"DB_USER":"root", "DB_NAME":"podcasts", "DB_PASS":"", "DB_HOST":"localhost", "CONN_STRING":"mysql:dbname=podcasts;host=localhost"}

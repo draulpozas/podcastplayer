@@ -1,0 +1,1 @@
+DELETE FROM `podcasts`.`subscription` WHERE id = {{id}};
