@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    font-family: Helvetica;
+}
+#playlist {
+    background-color: #EEE;
+    margin: 3px 1em 0;
+    border-radius: .5em .5em 0 0;
+    box-shadow: black 1px 3px 10px;
+    overflow: hidden;
+    position: relative;
+    z-index: -1;
+    transition: transform .5s;
+}
+.playlist .track:nth-of-type(even){
+    background-color: #AAA;
+}
+.hidden {
+    transform: translateY(calc(100% - 1em));
+}
+.track {
+    padding: .5em 1em;
+    text-transform: uppercase;
+    font-size: 1.2em;
+}
+.track:first-of-type {
+    background-color: #AAA;
+}
+#docker {
+    background-color: cornflowerblue;
+    text-align: center;
+    height: 1em;
+}
+#docker:hover {
+    cursor: pointer;
+}
+
+#player {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+#controls {
+    background-color: #CCC;
+    width: 100%;
+}
+#progressbar {
+    width: 100%;
+    height: 5px;
+    background: #DDD;
+}
+#progress {
+    height: 100%;
+    width: 40%;
+    background: lightblue;
+}
+#buttons {
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+}
+#buttons div{
+    background-color: #BBB;
+    margin: 0 2px;
+    text-align: center;
+    padding: 1rem 0;
+    width: 20%;
+}
+#buttons div:hover {
+    cursor: default;
+    background-color: #AAA;
+}
+
+#bin {
+    position: fixed;
+    top: 3em;
+    left: -100%;
+    background-color: red;
+    color: white;
+    font-size: 3em;
+    width: 2em;
+    box-shadow: red 0px 0px .5em;
+    border-radius: 0 .5em .5em 0;
+    transition: left .5s;
+}
