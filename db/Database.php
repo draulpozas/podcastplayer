@@ -34,6 +34,7 @@ class Database{
 
         $query = file_get_contents(__DIR__."/sql/$file");
         $query = strtr($query, $replace);
+        // var_dump($query);
         $stm = self::$connection->prepare($query);
 		$stm->execute();
 		return $stm->fetchAll(PDO::FETCH_ASSOC);
