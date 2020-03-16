@@ -71,7 +71,7 @@ class User {
     }
 
     /**
-    * Deletes the row from the database table "chat" where the id is equal to the id of the current object.
+    * Deletes the row from the database table "user" where the id is equal to the id of the current object.
     */
     public function delete(){
         Database::deleteUser($this->id());
