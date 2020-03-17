@@ -54,9 +54,11 @@ class Subscription {
         ];
 
         if ($this->id()) {
-            return Database::updateSubscription($params, $this->id());
+            Database::updateSubscription($params, $this->id());
+            return $this;
         } else {
-            return Database::insertSubscription($params);
+            Database::insertSubscription($params);
+            return $this;
         }
     }
 
@@ -106,6 +108,10 @@ class Subscription {
 
     public function rssGetLink() {
         return $this->channel()->getElementsByTagName('link')->item(0)->nodeValue;
+    }
+
+    public function rssGetImage() {
+        return $this->channel()->getElementsByTagName('image')->item(0)->attributes->item(0)->value;
     }
 
     public function rssGetLanguage() {

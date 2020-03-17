@@ -1,4 +1,4 @@
-INSERT INTO `podcasts`.'subscription' (
+INSERT INTO `podcasts`.`subscription` (
     `user_id`,
     `feed`
 ) VALUES (

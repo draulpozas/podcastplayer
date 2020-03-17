@@ -35,6 +35,7 @@ class Database{
         $query = file_get_contents(__DIR__."/sql/$file");
         $query = strtr($query, $replace);
         // var_dump($query);
+        // return $query;
         $stm = self::$connection->prepare($query);
 		$stm->execute();
 		return $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -104,7 +105,6 @@ class Database{
         $file = 'insertSubscription.sql';
         $replace = [
             '{{user_id}}' => $params['user_id'],
-            '{{name}}' => $params['name'],
             '{{feed}}' => $params['feed'],
         ];
 
@@ -124,7 +124,6 @@ class Database{
         $file = 'updateSubscription.sql';
         $replace = [
             '{{user_id}}' => $params['user_id'],
-            '{{name}}' => $params['name'],
             '{{feed}}' => $params['feed'],
             '{{id}}' => $id,
         ];

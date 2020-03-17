@@ -1,4 +1,4 @@
-INSERT INTO `podcasts`.'user' (
+INSERT INTO `podcasts`.`user` (
     `username`,
     `passwd`,
     `email`

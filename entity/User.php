@@ -89,25 +89,27 @@ class User {
         return $subscriptions;
     }
 
-    public function addSubscription($subName, $subFeed) {
-        $params = [
-            'user_id' => $this->id(),
-            'name' => $subName,
-            'feed' => $subFeed,
-        ];
+    public function addSubscription($subFeed) {
+        $sub = new Subscription();
+        $sub->user_id($this->id());
+        $sub->feed($subFeed);
+        return $sub->save();
+        // $params = [
+        //     'user_id' => $this->id(),
+        //     'feed' => $subFeed,
+        // ];
 
-        return Database::insertSubscription($params);
+        // return Database::insertSubscription($params);
     }
 
-    public function editSubscription($subName, $subFeed, $id) {
-        $params = [
-            'user_id' => $this->id(),
-            'name' => $subName,
-            'feed' => $subFeed,
-        ];
+    // public function editSubscription($subFeed, $id) {
+    //     $params = [
+    //         'user_id' => $this->id(),
+    //         'feed' => $subFeed,
+    //     ];
 
-        return Database::updateSubscription($params, $id);
-    }
+    //     return Database::updateSubscription($params, $id);
+    // }
 
     // /**
     //  * Returns whether or not the credentials given as parameters are valid for logging the current user in.
