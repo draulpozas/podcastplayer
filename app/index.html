@@ -11,23 +11,26 @@
     <div id="background">
 
     </div>
+    <div id="spacer"></div>
     <div id="player">
         <div id="playlist">
-            <div id="docker">⃛</div>
+            <div id="docker" onclick="hidePlaylist()">⃛</div>
+            <div class="container"></div>
+            <!-- <div class="track">THIS WOULD BE A PODCAST EPISODE</div>
             <div class="track">THIS WOULD BE A PODCAST EPISODE</div>
-            <div class="track">THIS WOULD BE A PODCAST EPISODE</div>
-            <div class="track">THIS WOULD BE A PODCAST EPISODE</div>
+            <div class="track">THIS WOULD BE A PODCAST EPISODE</div> -->
         </div>
         <div id="controls">
                 <div id="progressbar">
                     <div id="progress"></div>
                 </div>
-
                 <div id="buttons">
-                    <div id="bwdBtn">↶</div>
-                    <div id="playBtn">▶</div>
-                    <div id="fwdBtn">↷</div>
+                    <button id="bwdBtn" onclick="backwards()">↶</button>
+                    <button id="playBtn" onclick="playpause()">▶</button>
+                    <button id="fwdBtn" onclick="forwards()">↷</button>
                 </div>
+                <div id="title">-</div>
+                <div id="timer">0:00 / 0:00</div>
         </div>
     </div>
     <div id="bin">🗑</div>
