@@ -219,6 +219,7 @@ function adder() {
     input.type = 'text';
     input.id = 'subscribeLink';
     div.classList.add('podcast');
+    div.classList.add('adder');
 
     btn.onclick = subscribe;
 

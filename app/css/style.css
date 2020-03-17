@@ -36,10 +36,10 @@ header #subsBtn:hover {
     border-radius: .2em;
     margin: .5em;
 }
-.podcast:first-of-type {
+.podcast.adder {
     padding: 0;
 }
-.podcast:first-of-type:hover {
+.podcast.adder:hover {
     cursor: default;
     background: transparent;
 }
