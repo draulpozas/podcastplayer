@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__.'/../../config/autoload.php';
 // echo 'o';
-$user = new User(1);
+$user = new User(2);
 $subscriptions = ($user->getSubscriptions());
 $json_string = '[';
 foreach ($subscriptions as $sub) {

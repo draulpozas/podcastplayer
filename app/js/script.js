@@ -6,6 +6,7 @@ var episodes;
 var playlist;
 var aud;
 var updateInterval;
+var playqueue = [];
 
 function init() {
     background = document.getElementById('background');
@@ -18,6 +19,7 @@ function init() {
         let div = trackDiv(episode);
         adjustSpacer();
         playlist.getElementsByClassName('container')[0].appendChild(div);
+        updateQueue();
     }
 
     let bin = document.getElementById('bin');
@@ -26,6 +28,7 @@ function init() {
     }
     bin.ondrop = function(ev) {
         playlist.getElementsByClassName('draggin')[0].remove();
+        updateQueue();
     }
     loadSubscriptions();
 }
@@ -33,7 +36,14 @@ function init() {
 function trackDiv(episode) {
     let div = document.createElement('div');
     div.classList.add('track');
+    div.dataset.jsonstring = JSON.stringify(episode);
     div.innerHTML = '▶ '+ episode.title;
+
+        let span = document.createElement('span');
+        span.innerHTML = episode.podcast;
+        span.classList.add('subtitle');
+        div.appendChild(span);
+    
     div.onclick = function() {
         if (aud) {
             aud.pause();
@@ -74,8 +84,14 @@ function backwards() {
 
 function playpause() {
     if (!aud) {
-        return false;
-    } else if (aud.paused) {
+        if (playqueue.length > 0) {
+            aud = loadAudio(playqueue[0].src);
+            document.getElementById('title').innerHTML = playqueue[0].title;
+        } else {
+            return false;
+        }
+    }
+    if (aud.paused) {
         aud.play();
         document.getElementById('playBtn').innerHTML = '||';
         updateInterval = setInterval(updateProgress, 1000);
@@ -89,6 +105,7 @@ function playpause() {
 function updateProgress() {
     if (aud.ended) {
         clearInterval(updateInterval);
+        document.getElementById('playBtn').innerHTML = '▶';
     } else {
         let perc = aud.currentTime / aud.duration * 100;
         document.getElementById('progress').style.width = perc+'%';
@@ -120,6 +137,7 @@ function adjustSpacer() {
 function loadSubscriptions() {
     getSubscriptions();
     background.innerHTML = '';
+    adder();
     subscriptions.forEach(sub => {
         let div = document.createElement('div');
         div.classList.add('podcast');
@@ -127,6 +145,12 @@ function loadSubscriptions() {
             loadEpisodes(sub.id);
         }
         div.innerHTML = sub.name;
+
+            // let podLogo = document.createElement('img');
+            // podLogo.classList.add('podLogo');
+            // podLogo.src = sub.img;
+            // div.appendChild(podLogo);
+
         background.appendChild(div);
     });
 }
@@ -135,7 +159,7 @@ function getSubscriptions() {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            // console.log(this.responseText);
+            console.log(this.responseText);
             subscriptions = JSON.parse(this.responseText);
         }
     }
@@ -173,6 +197,53 @@ function getEpisodes(subId) {
 
 function hidePlaylist() {
     playlist.classList.toggle('hidden');
+}
+
+function updateQueue() {
+    let items = document.querySelectorAll('.track');
+    playqueue = [];
+    
+    items.forEach(item => {
+        playqueue.push(JSON.parse(item.dataset.jsonstring));
+    });
+}
+
+function adder() {
+    let div = document.createElement('div');
+    let input = document.createElement('input');
+    let btn = document.createElement('button');
+    div.appendChild(input);
+    div.appendChild(btn);
+
+    btn.innerHTML = '+';
+    input.type = 'text';
+    input.id = 'subscribeLink';
+    div.classList.add('podcast');
+
+    btn.onclick = subscribe;
+
+    background.appendChild(div);
+}
+
+function subscribe() {
+    let link = document.getElementById('subscribeLink').value;
+    document.getElementById('subscribeLink').value = '';
+
+    link = link.trim();
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.status == 200 && this.readyState == 4) {
+            console.log(this.responseText);
+            if (this.responseText == '1') {
+                loadSubscriptions();
+            } else {
+                return false;
+            }
+        }
+    }
+
+    xhttp.open('GET', 'php/subscribe.php?link='+link, true);
+    xhttp.send();
 }
 
 

@@ -36,12 +36,43 @@ header #subsBtn:hover {
     border-radius: .2em;
     margin: .5em;
 }
+.podcast:first-of-type {
+    padding: 0;
+}
+.podcast:first-of-type:hover {
+    cursor: default;
+    background: transparent;
+}
+.podcast button {
+/*     position: relative; */
+    float: right;
+    background: transparent;
+    color: inherit;
+    border: 0;
+    border-left: 1px solid #444;
+    line-height: 3em;
+    margin: auto;
+    width: 2rem;
+}
+.podcast button:hover {
+    background: #ffffff33;
+    cursor: pointer;
+}
+.podcast input {
+    width: calc(100% - 3rem);
+    font-size: 2em;
+}
 .podcast:hover{
     cursor: pointer;
     background-color: #ffffff33;
 }
 .episode:hover {
     cursor: grab;
+}
+.podLogo {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
 }
 
 #playlist {
@@ -65,8 +96,8 @@ header #subsBtn:hover {
 }
 .track {
     padding: .5em 1em;
-    text-transform: uppercase;
-    font-size: 1.2em;
+/*     text-transform: uppercase; */
+    font-size: 1em;
 }
 .track:nth-of-type(even) {
     background-color: #DDD;
@@ -74,6 +105,13 @@ header #subsBtn:hover {
 .track:hover{
     background-color: #00000044;
     cursor: pointer;
+}
+.track .subtitle {
+    margin-left: .5em;
+    color: #777;
+    font-size: .6em;
+    font-style: italic;
+    text-transform: none;
 }
 #docker {
     background-color: cornflowerblue;
@@ -112,7 +150,7 @@ header #subsBtn:hover {
 }
 #buttons button{
     background-color: cornflowerblue;
-    font-size: 2em;
+    font-size: 1.5em;
     color: inherit;
     margin: .1em 2px;
     text-align: center;
