@@ -15,23 +15,47 @@ function init() {
     }
     playlist.ondrop = function(ev) {
         let episode = JSON.parse(ev.dataTransfer.getData('episode'));
-        let div = document.createElement('div');
-        div.classList.add('track');
-        div.innerHTML = '▶ '+ episode.title;
-        div.onclick = function() {
-            if (aud) {
-                aud.pause();
-            }
-            console.log(episode);
-            aud = loadAudio(episode.src);
-            document.getElementById('title').innerHTML = episode.title;
-            aud.currentTime = 0;
-            playpause();
-        }
+        let div = trackDiv(episode);
         adjustSpacer();
         playlist.getElementsByClassName('container')[0].appendChild(div);
     }
+
+    let bin = document.getElementById('bin');
+    bin.ondragover = function(ev) {
+        ev.preventDefault();
+    }
+    bin.ondrop = function(ev) {
+        playlist.getElementsByClassName('draggin')[0].remove();
+    }
     loadSubscriptions();
+}
+
+function trackDiv(episode) {
+    let div = document.createElement('div');
+    div.classList.add('track');
+    div.innerHTML = '▶ '+ episode.title;
+    div.onclick = function() {
+        if (aud) {
+            aud.pause();
+        }
+        console.log(episode);
+        aud = loadAudio(episode.src);
+        document.getElementById('title').innerHTML = episode.title;
+        aud.currentTime = 0;
+        playpause();
+    }
+
+    div.draggable = 'true';
+    div.ondragstart = function(ev) {
+        div.classList.add('draggin');
+        document.getElementById('bin').style.left = '0';
+    }
+    div.ondragend = function(ev) {
+        document.getElementById('bin').style.left = '-100%';
+        div.classList.remove('draggin');
+    }
+
+    return div;
 }
 
 function loadAudio(src) {
