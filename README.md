@@ -1,5 +1,4 @@
 # podcastplayer
-Podcast client. Not really useful, but i learned how to parse an RSS feed while doing it.
 Not really going for the most useful thing, I just tried to learn stuff along the way.
 Thus, this project has drag-and-drop, RSS feed parsing, AJAX requests, and a sort-of-but-not-quite MVC design
 (empty "view" and "controller" folders included).
