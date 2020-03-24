@@ -152,10 +152,13 @@ class User {
         $usr = User::getByUsername($username);
         if (!$usr) {
             $usr = User::getByEmail($username);
-        }if (!$usr) {
+        }
+        if (!$usr) {
             return false;
         }
-        return password_verify($passwd, $usr->passwd());
+        if (password_verify($passwd, $usr->passwd())) {
+            return $usr;
+        }
         // if ($usr->verify($username, $passwd)) {
         //     return $usr->id();
         // }
