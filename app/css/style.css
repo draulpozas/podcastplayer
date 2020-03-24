@@ -33,6 +33,15 @@ header #subsBtn:hover {
     padding: 0;
 }
 
+header #logoutLink {
+    position: absolute;
+    right: 1em;
+    top: 0;
+}
+header #logoutLink a{
+    color: inherit;
+}
+
 #background{
     margin-bottom: 12em;
 }
