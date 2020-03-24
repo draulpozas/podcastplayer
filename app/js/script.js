@@ -247,6 +247,11 @@ function subscribe() {
     xhttp.send();
 }
 
+function changeVolume() {
+    let value = document.getElementById('volumeslider').value;
+    aud.volume = value/17;
+}
+
 
 
 

@@ -16,14 +16,21 @@ header {
 header #subsBtn {
     text-transform: uppercase;
     font-weight: bolder;
+    font-size: xxx-large;
     display: inline-block;
-    padding: 0 2em;
-    background-color: #ffffff33;
+    padding: 0 1em;
+    background-color: #ffffff;
     border-radius: .2em;
+    line-height: 1em;
 }
 header #subsBtn:hover {
     cursor: pointer;
     background-color: #ffffff66;
+}
+#subsBtn img {
+    height: .7em;
+    margin: 0;
+    padding: 0;
 }
 
 #background{
@@ -171,6 +178,11 @@ header #subsBtn:hover {
 #timer {
     text-align: center;
     padding: .2em 0;
+}
+#volumecontrol {
+    position: absolute;
+    right: 1em;
+    bottom: .1em;
 }
 
 #bin {

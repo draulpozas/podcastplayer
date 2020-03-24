@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="media/favicon.png" type="image/x-icon">
 </head>
 <body>
-    <header><div id="subsBtn" onclick="loadSubscriptions()">Podcasts</div><div id="logoutLink"><a href="logout.php">Log Out</a></div></header>
+    <header><div id="subsBtn" onclick="loadSubscriptions()"><img src="media/logo.png" alt="Podcasts"></div><div id="logoutLink"><a href="logout.php">Log Out</a></div></header>
     <div id="background">
         Loading your podcasts...
     </div>
@@ -31,7 +31,7 @@
                     <button id="fwdBtn" onclick="forwards()">↷</button>
                 </div>
                 <div id="title">-</div>
-                <div id="timer">0:00 / 0:00</div>
+                <div id="timer">0:00 / 0:00</div><div id="volumecontrol"><input type="range" id="volumeslider" min="0" max="17" onchange="changeVolume()">🕪</div>
         </div>
     </div>
     <div id="bin">🗑</div>
