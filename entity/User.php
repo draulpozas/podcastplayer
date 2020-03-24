@@ -60,7 +60,6 @@ class User {
             'username' => $this->username(),
             'passwd' => $this->passwd(),
             'email' => $this->email(),
-            'lang' => $this->lang(),
         ];
 
         if ($this->id()) {
