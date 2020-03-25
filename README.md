@@ -6,4 +6,4 @@ Thus, this project has drag-and-drop, RSS feed parsing, AJAX requests, and a sor
 This web-app receives a podcast's RSS feed from the user, reads it and displays the episodes it finds.
 Those episodes can be dragged to a playlist, where they can be played.
 
-It works with pretty much every podcast I have tried, except, for some reason, Hello Internet (http://www.hellointernet.fm/podcast?format=rss).
+It works with pretty much every podcast's RSS I have tried, except, for some reason, [Hello Internet](http://www.hellointernet.fm/).

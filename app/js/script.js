@@ -231,6 +231,11 @@ function subscribe() {
     document.getElementById('subscribeLink').value = '';
 
     link = link.trim();
+    if (link.length < 3) {
+        window.alert('Please enter a valid RSS feed.');
+        return false;
+    }
+
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.status == 200 && this.readyState == 4) {
@@ -238,7 +243,7 @@ function subscribe() {
             if (this.responseText == '1') {
                 loadSubscriptions();
             } else {
-                return false;
+                window.alert('Could not subscribe: invalid RSS');
             }
         }
     }

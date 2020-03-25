@@ -5,5 +5,8 @@ session_start();
 $link = $_GET['link'];
 $user = $_SESSION['user'];
 
-$user->addSubscription($link);
-echo '1';
+if ($user->addSubscription($link)) {
+    echo '1';
+} else {
+    echo '0';
+}

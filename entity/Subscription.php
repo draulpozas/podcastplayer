@@ -48,6 +48,9 @@ class Subscription {
     * thus, if id is not defined, the object is considered a new row yet to be inserted in the database; if it has an id, it represents data loaded from a database record.
     */
     public function save(){
+        if (!self::validateFeed($this->feed())) {
+            return false;
+        }
         $params = [
             'user_id' => $this->user_id(),
             'feed' => $this->feed(),
@@ -93,6 +96,21 @@ class Subscription {
         $this->rssDoc = new DOMDocument();
         $this->rssDoc->load($this->feed());
         // return $this->rssDoc;
+    }
+
+    private function validateFeed($feed) {
+        $valid = true;
+
+        if (strlen($feed) < 3) {
+            $valid = false;
+        } else {
+            $doc = new DOMDocument();
+            $doc->load($feed);
+            if ($doc->getElementsByTagName('channel')->length == 0) {
+                $valid = false;
+            }
+        }
+        return $valid;
     }
 
     private function channel() {
